@@ -370,35 +370,35 @@ class _ComplaintState extends State<Complaint>
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(20)),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              autocorrect: false,
-                              controller: _consumerController,
-                              maxLines: 1,
-                              //validator: (value) {},
-                              decoration: InputDecoration(
-                                  icon: Icon(
-                                    Icons.person_outline,
-                                    size: 40,
-                                    color: Colors.black,
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  labelText: 'Consumer Id',
-                                  hintText: "Enter a Consumer Id",
-                                  labelStyle: TextStyle(
-                                      decorationStyle:
-                                          TextDecorationStyle.solid)),
-                            ),
-                          ),
+//                          SizedBox(
+//                            height: 10,
+//                          ),
+//                          Container(
+//                            width: double.infinity,
+//                            padding: EdgeInsets.all(8),
+//                            decoration: BoxDecoration(
+//                                color: Colors.grey[300],
+//                                borderRadius: BorderRadius.circular(20)),
+//                            child: TextFormField(
+//                              keyboardType: TextInputType.text,
+//                              autocorrect: false,
+//                              controller: _consumerController,
+//                              maxLines: 1,
+//                              //validator: (value) {},
+//                              decoration: InputDecoration(
+//                                  icon: Icon(
+//                                    Icons.person_outline,
+//                                    size: 40,
+//                                    color: Colors.black,
+//                                  ),
+//                                  enabledBorder: InputBorder.none,
+//                                  labelText: 'Consumer Id',
+//                                  hintText: "Enter a Consumer Id",
+//                                  labelStyle: TextStyle(
+//                                      decorationStyle:
+//                                          TextDecorationStyle.solid)),
+//                            ),
+//                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -545,6 +545,16 @@ class _ComplaintState extends State<Complaint>
                                         ],
                                       ));
                                 } else {
+                                  setState(() {
+                                    _nameController.clear();
+                                    _phoneController.clear();
+                                    _houseController.clear();
+                                    _colonyController.clear();
+                                    _detailsController.clear();
+                                    _selectedDepartment = null;
+                                    _village = null;
+                                    _wardNumber = null;
+                                  });
                                   await sendData(refNum);
                                   _controller = scaffoldKey.currentState
                                       .showBottomSheet((context) {
@@ -615,7 +625,7 @@ class _ComplaintState extends State<Complaint>
           .collection("complaints")
           .document(refNum)
           .setData({
-        'consumerId': _consumerController.text,
+//        'consumerId': _consumerController.text,
         'name': _nameController.text,
         'phone': _phoneController.text,
         'house no': _houseController.text,
